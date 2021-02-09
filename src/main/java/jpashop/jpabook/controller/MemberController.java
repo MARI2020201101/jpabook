@@ -24,10 +24,10 @@ public class MemberController {
         return "members/createMembersForm";
     }
     @PostMapping("/members/new")
-    public String memberRegister(@Valid @ModelAttribute("memberForm") MemberForm memberForm, BindingResult bindingResult){
+    public String memberRegister(@Valid @ModelAttribute("memberForm") MemberForm memberForm, BindingResult result){
 
-        if(bindingResult.hasErrors()){
-            return "redirect:/members/new";
+        if(result.hasErrors()){
+            return "members/createMembersForm";
         }
 
          try{  Address address = new Address(memberForm.getCity(), memberForm.getStreet(), memberForm.getZipcode());
